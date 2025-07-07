@@ -1,0 +1,248 @@
+/* ========= Global Reset ========= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.page {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ========= Hero Section ========= */
+.hero {
+  position: relative;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero__video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  z-index: -1;
+}
+
+.hero__title {
+  font-size: 4rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+.hero__cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #111;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.hero__cta:hover {
+  background: #eee;
+}
+
+/* ========= Intro Section ========= */
+.intro {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro__text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.intro__text p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ========= Gallery & Filters ========= */
+.gallery {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+}
+
+.gallery__header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.gallery__heading {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.gallery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.filter-button {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #333;
+  background: transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.filter-button:hover,
+.filter-button.active {
+  background: #333;
+  color: #fff;
+}
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 1200px;
+}
+
+/* Gallery Card Style */
+.gallery__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery__card:hover {
+  transform: scale(1.02);
+}
+
+.gallery__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery__card:hover .gallery__image {
+  transform: scale(1.05);
+}
+
+.gallery__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gallery__card:hover .gallery__overlay {
+  opacity: 1;
+}
+
+.gallery__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.gallery__description {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  color: #ccc;
+}
+
+/* ========= About Section ========= */
+.about {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about__heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.about__text {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* ========= Contact ========= */
+.contact {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact__heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact__input,
+.contact__textarea {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.contact__button {
+  background: #111;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.contact__button:hover {
+  background: #333;
+}
+
+/* ========= Footer ========= */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  background: #222;
+  color: #fff;
+}

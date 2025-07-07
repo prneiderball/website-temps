@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of [Your Name], photographer & visual artist. Explore curated works, categories, and stories behind the lens.">
+  <title>[Your Name] – Visual Artist & Photographer</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplelightbox@2.14.2/dist/simple-lightbox.min.css" />
+</head>
+<body class="page">
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title" data-aos="fade-down">[Your Name]</h1>
+      <p class="hero__subtitle" data-aos="fade-up">Photography | Visual Art | Storytelling</p>
+      <a href="#portfolio" class="hero__cta" data-aos="zoom-in">View Portfolio</a>
+    </div>
+    <video autoplay muted loop class="hero__video">
+      <source src="https://videos.pexels.com/video-files/856192/856192-hd_1280_720_25fps.mp4" type="video/mp4" />
+    </video>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro" data-aos="fade-up">
+    <div class="intro__text">
+      <h2>Capturing Emotion. Crafting Narrative.</h2>
+      <p>Through lens and light, I create stories that move. From cinematic stills to raw portraiture, each frame is a fragment of truth.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Gallery -->
+  <section class="gallery" id="portfolio">
+    <div class="gallery__header">
+      <h2 class="gallery__heading">Selected Works</h2>
+      <div class="gallery__filters">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="portraits">Portraits</button>
+        <button class="filter-button" data-filter="nature">Nature</button>
+        <button class="filter-button" data-filter="urban">Urban</button>
+      </div>
+    </div>
+    <ul class="gallery__list" id="gallery-list">
+      <!-- Gallery items injected by JS -->
+    </ul>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about__content" data-aos="fade-up">
+      <h2 class="about__heading">About Me</h2>
+      <p class="about__text">
+        I'm [Your Name], a visual storyteller with a passion for shadow, form, and emotion. My work explores identity, place, and transformation through the camera lens.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact__content" data-aos="fade-up">
+      <h2 class="contact__heading">Get In Touch</h2>
+      <form class="contact__form" onsubmit="handleSubmit(event)">
+        <input class="contact__input" type="text" name="name" placeholder="Your Name" required />
+        <input class="contact__input" type="email" name="email" placeholder="Your Email" required />
+        <textarea class="contact__textarea" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+        <button class="contact__button" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <p class="footer__text">&copy; 2025 [Your Name]. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/simplelightbox@2.14.2/dist/simple-lightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
