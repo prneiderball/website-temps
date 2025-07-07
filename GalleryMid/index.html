@@ -22,7 +22,7 @@
       <a href="#portfolio" class="hero__cta" data-aos="zoom-in">View Portfolio</a>
     </div>
     <video autoplay muted loop class="hero__video">
-      <source src="https://videos.pexels.com/video-files/856192/856192-hd_1280_720_25fps.mp4" type="video/mp4" />
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
     </video>
   </header>
 
@@ -43,6 +43,14 @@
         <button class="filter-button" data-filter="portraits">Portraits</button>
         <button class="filter-button" data-filter="nature">Nature</button>
         <button class="filter-button" data-filter="urban">Urban</button>
+      </div>
+      <div class="gallery__sort">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="date-desc">Newest First</option>
+          <option value="date-asc">Oldest First</option>
+          <option value="title-asc">Title A-Z</option>
+        </select>
       </div>
     </div>
     <ul class="gallery__list" id="gallery-list">
