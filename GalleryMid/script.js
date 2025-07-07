@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const placeholderImages = [
     {
-      full: 'hhttps://picsum.photos/200',
+      full: 'https://picsum.photos/200',
       thumb: 'https://picsum.photos/200',
       title: 'Placeholder Image 1',
       description: 'This is a placeholder description.',
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filtered.forEach(img => {
       const li = document.createElement('li');
       li.className = 'gallery__item';
+      li.setAttribute('data-aos', 'fade-up');
       li.innerHTML = `
         <div class="gallery__card" data-category="${img.category}">
           <a href="${img.full}">
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       galleryList.appendChild(li);
     });
 
-    new SimpleLightbox('.gallery__list a');
+    new SimpleLightbox('.gallery__list a', { overlayOpacity: 0.9 });
     AOS.refresh();
   }
 
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGallery(placeholderImages, activeFilter);
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('.nav__link, .hero__cta').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
