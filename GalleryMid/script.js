@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  let lightbox = new SimpleLightbox('.gallery__list a', { overlayOpacity: 0.9 });
+
   function renderGallery(imagesArray, filter = 'all') {
     let imagesToRender = [...imagesArray];
 
@@ -63,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
       galleryList.appendChild(li);
     });
 
-    new SimpleLightbox('.gallery__list a', { overlayOpacity: 0.9 });
-    AOS.refresh();
+    lightbox.refresh(); // Refresh lightbox after rendering
+    AOS.refresh();      // Refresh AOS animations
   }
 
   renderGallery(placeholderImages);
@@ -85,13 +87,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.nav__link, .hero__cta').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+      const targetSelector = this.getAttribute('href');
+      if (targetSelector && targetSelector.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(targetSelector);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
   });
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', handleSubmit);
+  }
 });
 
 function handleSubmit(event) {

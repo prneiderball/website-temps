@@ -6,7 +6,7 @@
   <title>[Name]</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.1.0/simpleLightbox.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css" />
 </head>
 <body class="page">
   <!-- Navigation -->
@@ -87,7 +87,7 @@
 
   <!-- Contact Section -->
   <section id="contact" class="contact" data-aos="fade-up">
-    <h2 class="contact__heading">Connect With Art</h2>
+    <h2 class="contact__heading">Connect With [Name]</h2>
     <form class="contact__form" id="contact-form">
       <div class="contact__step" data-step="1">
         <input type="text" class="contact__input" placeholder="Your Name" required>
@@ -123,8 +123,13 @@
   </footer>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1200, once: true });</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.1.0/simpleLightbox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
+  <script>
+    // Initialize AOS after ensuring it's loaded
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 1200, once: true });
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
