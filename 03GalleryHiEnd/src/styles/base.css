@@ -1,5 +1,15 @@
 /* ========= Font Imports ========= */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Mulish:wght@300;400;500&display=swap');
+
+/* ========= Root Colors ========= */
+:root {
+  --color-background: #faf7f2;
+  --color-primary: #c6a56b;
+  --color-primary-dark: #a48552;
+  --color-accent: #6f4e37;
+  --color-text: #1a1a1a;
+  --color-muted: #6e6e6e;
+}
 
 /* ========= Reset & Normalization ========= */
 *,
@@ -16,9 +26,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #1a1a1a;
-  background-color: #fdfdfb;
+  font-family: 'Mulish', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -27,7 +37,8 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  color: #1a1a1a;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
   line-height: 1.2;
 }
 
@@ -39,7 +50,7 @@ h5 { font-size: 1.2rem; }
 
 p {
   font-size: 1.1rem;
-  color: #4a4a4a;
+  color: var(--color-muted);
   margin-bottom: 1.25rem;
 }
 
@@ -51,7 +62,7 @@ a {
 }
 
 a:hover {
-  color: #d4a373;
+  color: var(--color-primary);
 }
 
 /* ========= Buttons ========= */
@@ -63,15 +74,26 @@ button,
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-  background-color: #d4a373;
-  color: #1a1a1a;
+  transition: background 0.4s ease, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: var(--color-primary);
+  color: white;
 }
 
 button:hover,
 .button:hover {
-  background-color: #b58e51;
-  transform: scale(1.03);
+  background-color: var(--color-primary-dark);
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.button--secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.button--secondary:hover {
+  background: var(--color-primary);
+  color: white;
 }
 
 /* ========= Forms ========= */
@@ -82,9 +104,9 @@ select {
   font-size: 1rem;
   padding: 1rem;
   border-radius: 8px;
-  border: 1.5px solid #d4a373;
+  border: 1.5px solid var(--color-primary);
   background-color: #fffdfb;
-  color: #1a1a1a;
+  color: var(--color-text);
   transition: border-color 0.3s ease;
 }
 
@@ -92,7 +114,7 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #b58e51;
+  border-color: var(--color-primary-dark);
 }
 
 /* ========= Containers ========= */
@@ -104,15 +126,9 @@ select:focus {
 
 /* ========= Utilities ========= */
 .text-center { text-align: center; }
-.text-uppercase { text-transform: uppercase; }
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mt-4 { margin-top: 4rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
-.mb-4 { margin-bottom: 4rem; }
-.pt-4 { padding-top: 4rem; }
-.pb-4 { padding-bottom: 4rem; }
 
 /* ========= Scrollbar Styling ========= */
 ::-webkit-scrollbar {
@@ -122,7 +138,7 @@ select:focus {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #d4a373;
+  background-color: var(--color-primary);
   border-radius: 4px;
 }
 
@@ -135,29 +151,58 @@ select:focus {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========= Image & Media ========= */
+/* ========= Images ========= */
 img {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border: 8px solid #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* ========= Section Defaults ========= */
+/* ========= Sections ========= */
 section {
   padding: 6rem 0;
 }
 
-section .section-heading {
+.section-heading {
   text-align: center;
   font-size: 3rem;
   margin-bottom: 2.5rem;
 }
 
-/* ========= Footer Base ========= */
+/* ========= Footer ========= */
 footer {
-  background-color: #1a1a1a;
-  color: #f8f1e9;
+  background-color: var(--color-text);
+  color: var(--color-background);
   padding: 4rem 2rem;
   text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-social a {
+  font-size: 1.5rem;
+  color: var(--color-muted);
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--color-primary);
+}
+
+/* ========= Textures ========= */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  opacity: 0.04;
+  z-index: 0;
 }

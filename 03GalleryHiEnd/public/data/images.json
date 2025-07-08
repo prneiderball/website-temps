@@ -3,24 +3,24 @@
     "title": "Golden Hour",
     "category": "portraits",
     "date": "2025-07-01",
-    "thumb": "/images/portraits/golden-hour-thumb.webp",
-    "full": "/images/portraits/golden-hour-full.webp",
+    "thumb": "https://picsum.photos/200",
+    "full": "https://picsum.photos/200",
     "description": "Bathed in warm light, this portrait captures serenity and strength."
   },
   {
     "title": "Concrete Jungle",
     "category": "urban",
     "date": "2025-06-20",
-    "thumb": "/images/urban/concrete-jungle-thumb.webp",
-    "full": "/images/urban/concrete-jungle-full.webp",
+    "thumb": "https://picsum.photos/100",
+    "full": "https://picsum.photos/100",
     "description": "The interplay of metal and sky — a love letter to city life."
   },
   {
     "title": "Silent Bloom",
     "category": "nature",
     "date": "2025-06-10",
-    "thumb": "/images/nature/silent-bloom-thumb.webp",
-    "full": "/images/nature/silent-bloom-full.webp",
+    "thumb": "https://picsum.photos/300",
+    "full": "https://picsum.photos/300",
     "description": "A delicate moment suspended between blossom and breath."
   }
 ]
