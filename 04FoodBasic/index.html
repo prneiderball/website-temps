@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to [Restaurant Name], a modern restaurant and bar in [City Name] serving artisanal dishes and craft cocktails. Book a table or order online!">
+  <meta name="keywords" content="[Restaurant Name], restaurant, bar, [city name], artisanal food, craft cocktails, reservations">
+  <title>[Restaurant Name] – Artisanal Restaurant & Bar in [City]</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body class="page">
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">[Restaurant Name]</h1>
+      <p class="hero__subtitle">Artisanal Dishes & Craft Cocktails in [City]</p>
+      <div class="hero__ctas">
+        <a href="#reservations" class="hero__button">Reserve a Table</a>
+        <a href="https://your-order-platform.com" class="hero__button secondary" target="_blank">Order Online</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Highlights Section -->
+  <section class="menu" id="menu">
+    <h2 class="menu__heading">Menu Highlights</h2>
+    <ul class="menu__list" data-aos="fade-up">
+      <li class="menu__item">
+        <img src="dish1.jpg" alt="Truffle Mushroom Risotto" class="menu__image">
+        <h3>Truffle Mushroom Risotto</h3>
+        <p>Creamy risotto with wild mushrooms and truffle oil. <span class="price">$18</span></p>
+      </li>
+      <li class="menu__item">
+        <img src="dish2.jpg" alt="Signature Old Fashioned" class="menu__image">
+        <h3>Signature Old Fashioned</h3>
+        <p>House-aged bourbon, bitters, and a twist of orange. <span class="price">$12</span></p>
+      </li>
+      <li class="menu__item">
+        <img src="dish3.jpg" alt="Chocolate Lava Cake" class="menu__image">
+        <h3>Chocolate Lava Cake</h3>
+        <p>Warm chocolate cake with a molten center, served with vanilla ice cream. <span class="price">$9</span></p>
+      </li>
+    </ul>
+    <a href="menu.pdf" class="menu__button" data-aos="fade-up">View Full Menu</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2 class="about__heading">About Us</h2>
+    <p class="about__text" data-aos="fade-up">
+      At [Restaurant Name], we bring the flavors of [City] to life with artisanal dishes and craft cocktails. Since [year], our family-owned restaurant and bar has been a local favorite, blending fresh, local ingredients with a cozy, vibrant atmosphere. Join us for an unforgettable dining experience!
+    </p>
+  </section>
+
+  <!-- Reservations Section -->
+  <section class="reservations" id="reservations">
+    <h2 class="reservations__heading">Reserve a Table</h2>
+    <form class="reservations__form" onsubmit="handleSubmit(event)" data-aos="fade-up">
+      <input class="reservations__input" type="text" name="name" placeholder="Your Name" required aria-required="true">
+      <input class="reservations__input" type="email" name="email" placeholder="Your Email" required aria-required="true">
+      <input class="reservations__input" type="date" name="date" required aria-required="true">
+      <input class="reservations__input" type="time" name="time" required aria-required="true">
+      <input class="reservations__input" type="number" name="party-size" placeholder="Party Size" min="1" required aria-required="true">
+      <button class="reservations__button" type="submit">Book Now</button>
+    </form>
+    <p class="reservations__alternate">Or reserve via <a href="https://opentable.com" target="_blank" aria-label="Book via OpenTable">OpenTable</a>.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <p class="footer__text">123 Main St, [City], [State] 12345 | (123) 456-7890 | info@[yourrestaurant].com</p>
+      <div class="footer__social">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="instagram-icon.png" alt="" width="24"></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><img src="facebook-icon.png" alt="" width="24"></a>
+        <a href="https://x.com" target="_blank" aria-label="X"><img src="x-icon.png" alt="" width="24"></a>
+      </div>
+    </div>
+    <p class="footer__text">© 2025 [Restaurant Name]. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
