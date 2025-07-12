@@ -83,31 +83,55 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const galleryList = document.getElementById('gallery-list');
+  const loadMoreBtn = document.getElementById('load-more-btn');
 
-  galleryImages.forEach((img) => {
-    const li = document.createElement('li');
-    li.className = 'gallery__item';
-    li.setAttribute('data-aos', 'fade-up');
-    if (img.delay) li.setAttribute('data-aos-delay', img.delay);
+  const batchSize = 6; // Number of images to load each time
+  let currentIndex = 0;
 
-    li.innerHTML = `
-      <div class="gallery__card">
-        <a href="${img.full}">
-          <img class="gallery__image" src="${img.thumb}" alt="${img.alt}" loading="lazy">
-          <div class="gallery__overlay">
-            <h3 class="gallery__title">${img.title}</h3>
-            <p class="gallery__description">${img.description}</p>
-          </div>
-        </a>
-      </div>
-    `;
+  function renderBatch() {
+    const nextBatch = galleryImages.slice(currentIndex, currentIndex + batchSize);
 
-    galleryList.appendChild(li);
-  });
+    nextBatch.forEach((img) => {
+      const li = document.createElement('li');
+      li.className = 'gallery__item';
+      li.setAttribute('data-aos', 'fade-up');
+      if (img.delay) li.setAttribute('data-aos-delay', img.delay);
 
+      li.innerHTML = `
+        <div class="gallery__card">
+          <a href="${img.full}">
+            <img class="gallery__image" src="${img.thumb}" alt="${img.alt}" loading="lazy">
+            <div class="gallery__overlay">
+              <h3 class="gallery__title">${img.title}</h3>
+              <p class="gallery__description">${img.description}</p>
+            </div>
+          </a>
+        </div>
+      `;
+
+      galleryList.appendChild(li);
+    });
+
+    currentIndex += batchSize;
+
+    if (currentIndex >= galleryImages.length) {
+      loadMoreBtn.style.display = 'none';
+    }
+
+    AOS.refresh(); // Refresh animations after new elements added
+  }
+
+  // Initial batch load
+  renderBatch();
+
+  // Load more on button click
+  loadMoreBtn.addEventListener('click', renderBatch);
+
+  // Initialize Lightbox and AOS
   new SimpleLightbox('.gallery__list a');
   AOS.init({ duration: 1000 });
 
+  // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -119,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Simple form submit handler (if you want to keep this)
 function handleSubmit(event) {
   event.preventDefault();
   alert("Thank you! Your message has been sent.");

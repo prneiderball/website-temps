@@ -124,6 +124,27 @@ body.page {
   color: var(--color-overlay-text);
 }
 
+.load-more-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.load-more-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background: var(--color-btn-bg, #333);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background: var(--color-hover-bg, #555);
+}
+
+
 /* ====== About Section ====== */
 .about {
   padding: var(--spacing-section);
