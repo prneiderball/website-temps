@@ -1,135 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Name]</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css" />
-</head>
-<body class="page">
-  <!-- Navigation -->
-  <header class="header">
-    <nav class="nav">
-      <a href="#" class="nav__logo" data-aos="fade-down">[Name]</a>
-      <button class="nav__toggle" aria-label="Toggle menu">
-        <span class="nav__toggle-icon"></span>
-      </button>
-      <ul class="nav__list">
-        <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[Name]</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css"
+    />
+  </head>
+  <body class="page">
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="nav">
+        <a href="#" class="nav__logo" data-aos="fade-down">[Name]</a>
+        <button class="nav__toggle" aria-label="Toggle menu">
+          <span class="nav__toggle-icon"></span>
+        </button>
+        <ul class="nav__list">
+          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero" data-parallax="scroll">
-    <video class="hero__video" autoplay muted loop>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-jungle-2391-large.mp4" type="video/mp4">
-    </video>
-    <div class="hero__overlay"></div>
-    <div class="hero__content" data-aos="fade-up" data-aos-delay="200">
-      <h1 class="hero__title">[Name]</h1>
-      <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="400">Crafting Timeless Visual Poetry</p>
-      <div class="hero__cta-group">
-        <a href="#portfolio" class="hero__cta">Explore Portfolio</a>
-        <a href="#contact" class="hero__cta hero__cta--secondary">Book a Consultation</a>
+    <!-- Hero Section -->
+    <section class="hero" data-parallax="scroll">
+      <video class="hero__video" autoplay muted loop>
+        <source
+          src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-jungle-2391-large.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero__overlay"></div>
+      <div class="hero__content" data-aos="fade-up" data-aos-delay="200">
+        <h1 class="hero__title">[Name]</h1>
+        <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="400">
+          Crafting Timeless Visual Poetry
+        </p>
+        <div class="hero__cta-group">
+          <a href="#portfolio" class="hero__cta">Explore Portfolio</a>
+          <a href="#contact" class="hero__cta hero__cta--secondary"
+            >Book a Consultation</a
+          >
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Intro Section -->
-  <section class="intro" data-aos="fade-up">
-    <div class="intro__content">
-      <h2>Elegance in Every Frame</h2>
-      <p>Each photograph is a masterpiece, meticulously crafted to capture the soul of the moment with unparalleled artistry.</p>
-    </div>
-  </section>
+    <!-- Intro Section -->
+    <section class="intro" data-aos="fade-up">
+      <div class="intro__content">
+        <h2>Elegance in Every Frame</h2>
+        <p>
+          Each photograph is a masterpiece, meticulously crafted to capture the
+          soul of the moment with unparalleled artistry.
+        </p>
+      </div>
+    </section>
 
-  <!-- Gallery Section -->
-  <section id="portfolio" class="gallery" data-aos="fade-up">
-    <h2 class="gallery__heading">Curated Works</h2>
-    <div class="gallery__carousel" id="featured-carousel">
-      <!-- Populated by JavaScript -->
-    </div>
-    <div class="gallery__filters">
-      <button class="filter-button active" data-filter="all">All</button>
-      <button class="filter-button" data-filter="portraits">Portraits</button>
-      <button class="filter-button" data-filter="nature">Nature</button>
-      <button class="filter-button" data-filter="urban">Urban</button>
-    </div>
-    <div class="gallery__sort">
-      <label for="sort-select">Sort by:</label>
-      <select id="sort-select">
-        <option value="date-desc">Newest First</option>
-        <option value="date-asc">Oldest First</option>
-        <option value="title-asc">Title A-Z</option>
-      </select>
-    </div>
-    <ul class="gallery__list" id="gallery-list"></ul>
-  </section>
+    <!-- Gallery Section -->
+    <section id="portfolio" class="gallery" data-aos="fade-up">
+      <h2 class="gallery__heading">Curated Works</h2>
+      <div class="gallery__carousel" id="featured-carousel">
+        <!-- Populated by JavaScript -->
+      </div>
+      <div class="gallery__filters">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="portraits">Portraits</button>
+        <button class="filter-button" data-filter="nature">Nature</button>
+        <button class="filter-button" data-filter="urban">Urban</button>
+      </div>
+      <div class="gallery__sort">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="date-desc">Newest First</option>
+          <option value="date-asc">Oldest First</option>
+          <option value="title-asc">Title A-Z</option>
+        </select>
+      </div>
+      <ul class="gallery__list" id="gallery-list"></ul>
+      <div class="gallery__toggle-wrapper">
+        <button id="toggle-gallery" class="gallery__toggle">Show More</button>
+      </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about" data-aos="fade-up">
-    <div class="about__container">
-      <div class="about__image">
-        <img src="https://picsum.photos/800" alt="Your Name, Photographer" loading="lazy">
-        <div class="about__quote" data-aos="fade-right">"Photography is my language of truth."</div>
+    <!-- About Section -->
+    <section id="about" class="about" data-aos="fade-up">
+      <div class="about__container">
+        <div class="about__image">
+          <img
+            src="https://picsum.photos/800"
+            alt="Your Name, Photographer"
+            loading="lazy"
+          />
+          <div class="about__quote" data-aos="fade-right">
+            "Photography is my language of truth."
+          </div>
+        </div>
+        <div class="about__content" data-aos="fade-left" data-aos-delay="200">
+          <h2 class="about__heading">The Art of Storytelling</h2>
+          <p class="about__text">
+            I'm [Your Name], a visionary photographer dedicated to weaving
+            narratives through light and shadow. My work transcends the
+            ordinary, offering a glimpse into the profound beauty of existence.
+          </p>
+        </div>
       </div>
-      <div class="about__content" data-aos="fade-left" data-aos-delay="200">
-        <h2 class="about__heading">The Art of Storytelling</h2>
-        <p class="about__text">I'm [Your Name], a visionary photographer dedicated to weaving narratives through light and shadow. My work transcends the ordinary, offering a glimpse into the profound beauty of existence.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact" data-aos="fade-up">
-    <h2 class="contact__heading">Connect With [Name]</h2>
-    <form class="contact__form" id="contact-form">
-      <div class="contact__step" data-step="1">
-        <input type="text" class="contact__input" placeholder="Your Name" required>
-        <input type="email" class="contact__input" placeholder="Your Email" required>
-        <button type="button" class="contact__button contact__next">Next</button>
-      </div>
-      <div class="contact__step" data-step="2" style="display: none;">
-        <textarea class="contact__textarea" placeholder="Your Vision" rows="6" required></textarea>
-        <button type="button" class="contact__button contact__prev">Back</button>
-        <button type="submit" class="contact__button">Send Message</button>
-      </div>
-      <div class="contact__progress">
-        <span class="contact__progress-step active"></span>
-        <span class="contact__progress-step"></span>
-      </div>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__content">
-      <p>© 2025 [Your Name]. All rights reserved.</p>
-      <form class="footer__newsletter">
-        <input type="email" class="footer__newsletter-input" placeholder="Join Our Newsletter" required>
-        <button type="submit" class="footer__newsletter-button">Subscribe</button>
+    <!-- Contact Section -->
+    <section id="contact" class="contact" data-aos="fade-up">
+      <h2 class="contact__heading">Connect With [Name]</h2>
+      <form class="contact__form" id="contact-form">
+        <div class="contact__step" data-step="1">
+          <input
+            type="text"
+            class="contact__input"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            type="email"
+            class="contact__input"
+            placeholder="Your Email"
+            required
+          />
+          <button type="button" class="contact__button contact__next">
+            Next
+          </button>
+        </div>
+        <div class="contact__step" data-step="2" style="display: none">
+          <textarea
+            class="contact__textarea"
+            placeholder="Your Vision"
+            rows="6"
+            required
+          ></textarea>
+          <button type="button" class="contact__button contact__prev">
+            Back
+          </button>
+          <button type="submit" class="contact__button">Send Message</button>
+        </div>
+        <div class="contact__progress">
+          <span class="contact__progress-step active"></span>
+          <span class="contact__progress-step"></span>
+        </div>
       </form>
-      <div class="footer__social">
-        <a href="#" class="footer__social-link" data-aos="zoom-in" data-aos-delay="100">Instagram</a>
-        <a href="#" class="footer__social-link" data-aos="zoom-in" data-aos-delay="200">Twitter</a>
-        <a href="#" class="footer__social-link" data-aos="zoom-in" data-aos-delay="300">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
-  <script>
-    // Initialize AOS after ensuring it's loaded
-    if (typeof AOS !== 'undefined') {
-      AOS.init({ duration: 1200, once: true });
-    }
-  </script>
-  <script src="script.js"></script>
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__content">
+        <p>© 2025 [Your Name]. All rights reserved.</p>
+        <form class="footer__newsletter">
+          <input
+            type="email"
+            class="footer__newsletter-input"
+            placeholder="Join Our Newsletter"
+            required
+          />
+          <button type="submit" class="footer__newsletter-button">
+            Subscribe
+          </button>
+        </form>
+        <div class="footer__social">
+          <a
+            href="#"
+            class="footer__social-link"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            >Instagram</a
+          >
+          <a
+            href="#"
+            class="footer__social-link"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            >Twitter</a
+          >
+          <a
+            href="#"
+            class="footer__social-link"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
+    <script>
+      // Initialize AOS after ensuring it's loaded
+      if (typeof AOS !== "undefined") {
+        AOS.init({ duration: 1200, once: true });
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>

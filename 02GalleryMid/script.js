@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =============================
-     Placeholder Images (Gallery Data)
-  ============================= */
   const placeholderImages = [
     {
-      full: "https://picsum.photos/200",
-      thumb: "https://picsum.photos/200",
+      full: "https://picsum.photos/id/1011/600",
+      thumb: "https://picsum.photos/id/1011/300",
       title: "Placeholder Image 1",
       description: "This is a placeholder description.",
       alt: "Placeholder Image 1",
@@ -13,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "2025-07-01",
     },
     {
-      full: "https://picsum.photos/100",
-      thumb: "https://picsum.photos/100",
+      full: "https://picsum.photos/id/1025/600",
+      thumb: "https://picsum.photos/id/1025/300",
       title: "Placeholder Image 2",
       description: "Another placeholder description.",
       alt: "Placeholder Image 2",
@@ -22,27 +19,62 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "2025-06-15",
     },
     {
-      full: "https://picsum.photos/300",
-      thumb: "https://picsum.photos/300",
+      full: "https://picsum.photos/id/1003/600",
+      thumb: "https://picsum.photos/id/1003/300",
       title: "Placeholder Image 3",
       description: "Sample placeholder text.",
       alt: "Placeholder Image 3",
       category: "portraits",
       date: "2025-06-01",
     },
+    {
+      full: "https://picsum.photos/id/1041/600",
+      thumb: "https://picsum.photos/id/1041/300",
+      title: "Placeholder Image 4",
+      description: "Another sample.",
+      alt: "Placeholder Image 4",
+      category: "nature",
+      date: "2025-05-20",
+    },
+    {
+      full: "https://picsum.photos/id/1031/600",
+      thumb: "https://picsum.photos/id/1031/300",
+      title: "Placeholder Image 5",
+      description: "Urban landscape.",
+      alt: "Placeholder Image 5",
+      category: "urban",
+      date: "2025-05-10",
+    },
+    {
+      full: "https://picsum.photos/id/1051/600",
+      thumb: "https://picsum.photos/id/1051/300",
+      title: "Placeholder Image 6",
+      description: "Portrait with dramatic lighting.",
+      alt: "Placeholder Image 6",
+      category: "portraits",
+      date: "2025-05-05",
+    },
+    {
+      full: "https://picsum.photos/id/1061/600",
+      thumb: "https://picsum.photos/id/1061/300",
+      title: "Placeholder Image 7",
+      description: "Sunset in the city.",
+      alt: "Placeholder Image 7",
+      category: "urban",
+      date: "2025-04-25",
+    },
   ];
 
-  /* =============================
-     Initialize Lightbox
-  ============================= */
+  const toggleButton = document.getElementById("toggle-gallery");
+  const galleryList = document.getElementById("gallery-list");
+  let isExpanded = false;
+  const initialVisibleCount = 6;
+
   const lightbox = new SimpleLightbox(".gallery__list a", {
     overlayOpacity: 0.9,
   });
 
-  /* =============================
-     Gallery Rendering Function
-  ============================= */
-  function renderGallery(images, filter = "all") {
+  function renderGallery(images, filter = "all", expanded = false) {
     const sortBy = document.getElementById("sort-select").value;
 
     const sorted = [...images].sort((a, b) => {
@@ -57,10 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
         ? sorted
         : sorted.filter((img) => img.category === filter);
 
-    const galleryList = document.getElementById("gallery-list");
+    const visibleImages = expanded
+      ? filteredImages
+      : filteredImages.slice(0, initialVisibleCount);
+
     galleryList.innerHTML = "";
 
-    filteredImages.forEach((img) => {
+    visibleImages.forEach((img) => {
       const li = document.createElement("li");
       li.className = "gallery__item";
       li.setAttribute("data-aos", "fade-up");
@@ -73,9 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="gallery__description">${img.description}</p>
             </div>
           </a>
-        </div>`;
+        </div>
+      `;
       galleryList.appendChild(li);
     });
+
+    if (filteredImages.length <= initialVisibleCount && !expanded) {
+      toggleButton.style.display = "none";
+    } else {
+      toggleButton.style.display = "inline-block";
+      toggleButton.textContent = expanded ? "Show Less" : "Show More";
+    }
 
     lightbox.refresh();
     AOS.refresh();
@@ -83,6 +126,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial render
   renderGallery(placeholderImages);
+
+  // Toggle button
+  toggleButton.addEventListener("click", () => {
+    isExpanded = !isExpanded;
+    const activeFilter =
+      document
+        .querySelector(".filter-button.active")
+        ?.getAttribute("data-filter") || "all";
+    renderGallery(placeholderImages, activeFilter, isExpanded);
+  });
+
+  // Filter buttons
+  document.querySelectorAll(".filter-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document
+        .querySelectorAll(".filter-button")
+        .forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const filter = button.getAttribute("data-filter");
+      isExpanded = false;
+      renderGallery(placeholderImages, filter, isExpanded);
+    });
+  });
+
+  // Sort dropdown
+  document.getElementById("sort-select").addEventListener("change", () => {
+    const activeFilter =
+      document
+        .querySelector(".filter-button.active")
+        ?.getAttribute("data-filter") || "all";
+    renderGallery(placeholderImages, activeFilter, isExpanded);
+  });
 
   // Mobile Nav Toggle
   const navToggle = document.querySelector(".nav__toggle");
@@ -93,35 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navList.classList.toggle("active");
   });
 
-  /* =============================
-     Filter Buttons
-  ============================= */
-  document.querySelectorAll(".filter-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      document
-        .querySelectorAll(".filter-button")
-        .forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      const filter = button.getAttribute("data-filter");
-      renderGallery(placeholderImages, filter);
-    });
-  });
-
-  /* =============================
-     Sort Dropdown
-  ============================= */
-  document.getElementById("sort-select").addEventListener("change", () => {
-    const activeFilter =
-      document
-        .querySelector(".filter-button.active")
-        ?.getAttribute("data-filter") || "all";
-    renderGallery(placeholderImages, activeFilter);
-  });
-
-  /* =============================
-     Smooth Scrolling Links
-  ============================= */
+  // Smooth scrolling
   document.querySelectorAll(".nav__link, .hero__cta").forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       const targetSelector = anchor.getAttribute("href");
@@ -135,20 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* =============================
-     Contact Form Handling
-  ============================= */
+  // Contact form
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
-    contactForm.addEventListener("submit", handleSubmit);
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent.");
+      e.target.reset();
+    });
   }
 });
-
-/* =============================
-   Form Submission Logic
-============================= */
-function handleSubmit(event) {
-  event.preventDefault();
-  alert("Thank you! Your message has been sent.");
-  event.target.reset();
-}

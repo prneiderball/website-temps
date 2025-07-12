@@ -1,0 +1,29 @@
+.footer {
+  background: #1a1a1a;
+  color: #f8f1e9;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.footer__content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer__newsletter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.footer__newsletter-input {
+  padding: 1rem;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  background: #f8f1e9;
+  color: #1a1a1a;
+  width: 250px;
+}

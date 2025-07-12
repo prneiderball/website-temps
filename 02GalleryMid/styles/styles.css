@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;500&display=swap');
+@import url('nav.css');
+@import url('hero.css');
+@import url('gallery.css');
+@import url('about.css');
+@import url('contact.css');
+@import url('footer.css');
+@import url('responsive.css');
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.page {
+  margin: 0;
+  font-family: 'Lora', serif;
+  background-color: #f8f1e9;
+  color: #1a1a1a;
+  line-height: 1.8;
+  scroll-behavior: smooth;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="10" fill="rgba(212,163,115,0.5)"/></svg>'), auto;
+}

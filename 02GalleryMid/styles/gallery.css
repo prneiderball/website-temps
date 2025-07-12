@@ -1,0 +1,226 @@
+section {
+  padding: 10rem 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.intro__content h2,
+.about__heading,
+.contact__heading,
+.gallery__heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.intro__content p,
+.about__text {
+  font-size: 1.3rem;
+  color: #4a4a4a;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.gallery {
+  background: #f3f1ed;
+}
+
+.gallery__carousel {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel__item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  height: 500px;
+}
+
+.carousel__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.carousel__nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel__button {
+  background: rgba(26, 26, 26, 0.7);
+  border: none;
+  color: #d4a373;
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel__button:hover {
+  background: #d4a373;
+  color: #1a1a1a;
+}
+
+.gallery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-top: 3rem;
+}
+
+.filter-button {
+  padding: 0.9rem 2.5rem;
+  border: 2px solid #d4a373;
+  background: transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background: #d4a373;
+  color: #f8f1e9;
+}
+
+.gallery__sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.gallery__sort label {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+#sort-select {
+  padding: 0.6rem;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  background: transparent;
+  color: #1a1a1a;
+}
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  justify-content: center;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 4rem;
+}
+
+
+.gallery__card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.gallery__card:hover {
+  transform: scale(1.05);
+}
+
+.gallery__image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery__card:hover .gallery__image {
+  transform: scale(1.1);
+}
+
+.gallery__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.85), transparent);
+  color: #f8f1e9;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery__card:hover .gallery__overlay {
+  opacity: 1;
+}
+
+.gallery__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.gallery__description {
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+}
+
+.load-more-wrapper,
+.load-less-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* ================================
+   Show More / Show Less Button
+================================ */
+
+.gallery__toggle {
+  display: inline-block;
+  margin: 3rem auto 0;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: 2px solid #d4a373;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: 'Lora', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery__toggle:hover {
+  background-color: #d4a373;
+  color: #f8f1e9;
+  transform: scale(1.05);
+}
+
+.gallery__toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}

@@ -1,0 +1,69 @@
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact__step {
+  transition: opacity 0.3s ease;
+}
+
+.contact__input,
+.contact__textarea {
+  padding: 1.5rem;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  background: #f8f1e9;
+  color: #1a1a1a;
+}
+
+.contact__button {
+  background: #d4a373;
+  color: #1a1a1a;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact__button:hover {
+  background: #b58e51;
+  transform: scale(1.05);
+}
+
+.contact__prev {
+  background: transparent;
+  border: 2px solid #d4a373;
+  color: #d4a373;
+}
+
+.contact__prev:hover {
+  background: #d4a373;
+  color: #1a1a1a;
+}
+
+.contact__progress {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contact__progress-step {
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.contact__progress-step.active {
+  background: #d4a373;
+}
