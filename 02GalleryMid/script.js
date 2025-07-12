@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+  /* =============================
+     Placeholder Images (Gallery Data)
+  ============================= */
   const placeholderImages = [
     {
       full: 'https://picsum.photos/200',
@@ -29,26 +32,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  let lightbox = new SimpleLightbox('.gallery__list a', { overlayOpacity: 0.9 });
+  /* =============================
+     Initialize Lightbox
+  ============================= */
+  const lightbox = new SimpleLightbox('.gallery__list a', { overlayOpacity: 0.9 });
 
-  function renderGallery(imagesArray, filter = 'all') {
-    let imagesToRender = [...imagesArray];
-
+  /* =============================
+     Gallery Rendering Function
+  ============================= */
+  function renderGallery(images, filter = 'all') {
     const sortBy = document.getElementById('sort-select').value;
-    if (sortBy === 'date-asc') {
-      imagesToRender.sort((a, b) => new Date(a.date) - new Date(b.date));
-    } else if (sortBy === 'date-desc') {
-      imagesToRender.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (sortBy === 'title-asc') {
-      imagesToRender.sort((a, b) => a.title.localeCompare(b.title));
-    }
+
+    const sorted = [...images].sort((a, b) => {
+      if (sortBy === 'date-asc') return new Date(a.date) - new Date(b.date);
+      if (sortBy === 'date-desc') return new Date(b.date) - new Date(a.date);
+      if (sortBy === 'title-asc') return a.title.localeCompare(b.title);
+      return 0;
+    });
+
+    const filteredImages = filter === 'all'
+      ? sorted
+      : sorted.filter(img => img.category === filter);
 
     const galleryList = document.getElementById('gallery-list');
     galleryList.innerHTML = '';
 
-    const filtered = filter === 'all' ? imagesToRender : imagesToRender.filter(img => img.category === filter);
-
-    filtered.forEach(img => {
+    filteredImages.forEach(img => {
       const li = document.createElement('li');
       li.className = 'gallery__item';
       li.setAttribute('data-aos', 'fade-up');
@@ -65,29 +74,40 @@ document.addEventListener('DOMContentLoaded', () => {
       galleryList.appendChild(li);
     });
 
-    lightbox.refresh(); // Refresh lightbox after rendering
-    AOS.refresh();      // Refresh AOS animations
+    lightbox.refresh();
+    AOS.refresh();
   }
 
+  // Initial render
   renderGallery(placeholderImages);
 
-  document.querySelectorAll('.filter-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
+  /* =============================
+     Filter Buttons
+  ============================= */
+  document.querySelectorAll('.filter-button').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
       renderGallery(placeholderImages, filter);
     });
   });
 
+  /* =============================
+     Sort Dropdown
+  ============================= */
   document.getElementById('sort-select').addEventListener('change', () => {
-    const activeFilter = document.querySelector('.filter-button.active').getAttribute('data-filter');
+    const activeFilter = document.querySelector('.filter-button.active')?.getAttribute('data-filter') || 'all';
     renderGallery(placeholderImages, activeFilter);
   });
 
+  /* =============================
+     Smooth Scrolling Links
+  ============================= */
   document.querySelectorAll('.nav__link, .hero__cta').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetSelector = this.getAttribute('href');
+    anchor.addEventListener('click', (e) => {
+      const targetSelector = anchor.getAttribute('href');
       if (targetSelector && targetSelector.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(targetSelector);
@@ -98,12 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* =============================
+     Contact Form Handling
+  ============================= */
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', handleSubmit);
   }
 });
 
+/* =============================
+   Form Submission Logic
+============================= */
 function handleSubmit(event) {
   event.preventDefault();
   alert("Thank you! Your message has been sent.");
