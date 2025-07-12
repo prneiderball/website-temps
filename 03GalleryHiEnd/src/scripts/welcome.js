@@ -238,45 +238,45 @@ gsap.from('.section-heading span', {
   }
 });
 
-// 3D Gallery Carousel
-const galleryItems = document.querySelectorAll('.teaser-gallery__item');
-const totalItems = galleryItems.length;
-let galleryAngle = 0;
+// 3D Gallery Carousel (fixed)
+const carousel = document.querySelector('.teaser-gallery__carousel');
+const items = document.querySelectorAll('.teaser-gallery__item');
+const itemCount = items.length;
+let angle = 0;
+const theta = itemCount > 0 ? 360 / itemCount : 0;
+const radius = 700;
 
-function updateGallery() {
-  galleryItems.forEach((item, index) => {
-    const angle = (index * (360 / totalItems)) + galleryAngle;
-    const radius = 600;
-    const x = Math.cos(angle * (Math.PI / 180)) * radius;
-    const z = Math.sin(angle * (Math.PI / 180)) * radius;
-    item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${-angle}deg)`;
-    item.style.opacity = z > 0 ? 1 : 0.5;
+function positionItems() {
+  if (!items || items.length === 0) return;
+  items.forEach((item, index) => {
+    const itemAngle = theta * index;
+    item.style.transform = `
+      rotateY(${itemAngle}deg)
+      translateZ(${radius}px)
+    `;
   });
 }
 
 function rotateCarousel(direction) {
-  galleryAngle += direction === 'right' ? -360 / totalItems : 360 / totalItems;
-  gsap.to('.teaser-gallery__carousel', {
-    rotationY: galleryAngle,
-    duration: 1,
-    ease: 'power3.out'
-  });
-  updateGallery();
+  if (!carousel || itemCount === 0) return;
+  angle += direction === 'right' ? -theta : theta;
+  carousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
   playSound('slide');
 }
 
-document.querySelector('.teaser-gallery__button--next').addEventListener('click', () => {
-  rotateCarousel('right');
-});
+// Setup initial item positions
+if (itemCount > 0 && carousel) {
+  positionItems();
 
-document.querySelector('.teaser-gallery__button--prev').addEventListener('click', () => {
-  rotateCarousel('left');
-});
+  // Add event listeners
+  const nextBtn = document.querySelector('.teaser-gallery__button--next');
+  const prevBtn = document.querySelector('.teaser-gallery__button--prev');
+  if (nextBtn) nextBtn.addEventListener('click', () => rotateCarousel('right'));
+  if (prevBtn) prevBtn.addEventListener('click', () => rotateCarousel('left'));
 
-// Auto-rotate gallery
-setInterval(() => {
-  rotateCarousel('right');
-}, 5000);
+  // Auto-rotate
+  setInterval(() => rotateCarousel('right'), 5000);
+}
 
 // Vanilla Tilt
 VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
@@ -433,51 +433,6 @@ function personalizeGreeting() {
   document.querySelector('.hero__subtitle').textContent = greeting;
 }
 setTimeout(personalizeGreeting, 500);
-
-// Sound Design
-const soundToggle = document.createElement('button');
-soundToggle.classList.add('sound-toggle');
-soundToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-soundToggle.style.position = 'fixed';
-soundToggle.style.top = '20px';
-soundToggle.style.right = '80px';
-soundToggle.style.background = 'none';
-soundToggle.style.border = 'none';
-soundToggle.style.color = 'var(--accent-color)';
-soundToggle.style.fontSize = '1.5rem';
-soundToggle.style.cursor = 'pointer';
-soundToggle.style.zIndex = '1000';
-document.body.appendChild(soundToggle);
-
-let isSoundEnabled = true;
-soundToggle.addEventListener('click', () => {
-  isSoundEnabled = !isSoundEnabled;
-  soundToggle.querySelector('i').classList.toggle('fa-volume-up', isSoundEnabled);
-  soundToggle.querySelector('i').classList.toggle('fa-volume-mute', !isSoundEnabled);
-});
-
-function playSound(type) {
-  if (!isSoundEnabled) return;
-  let sound;
-  switch (type) {
-    case 'click':
-      sound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_0e38d4d8f5.mp3');
-      break;
-    case 'modal':
-      sound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_7f7b6c7f8b.mp3');
-      break;
-    case 'slide':
-      sound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_4c4b8e1b9c.mp3');
-      break;
-    case 'transition':
-      sound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_9e0a7b1b2e.mp3');
-      break;
-    case 'nav-toggle':
-      sound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_3e3b7e1a9d.mp3');
-      break;
-  }
-  if (sound) sound.play().catch(() => {});
-}
 
 // Form Submission
 document.querySelector('.contact__form').addEventListener('submit', async (e) => {
