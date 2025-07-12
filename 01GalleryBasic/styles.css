@@ -124,26 +124,42 @@ body.page {
   color: var(--color-overlay-text);
 }
 
-.load-more-wrapper {
-  text-align: center;
+.load-more-wrapper,
+.load-less-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
 }
 
-.load-more-btn {
+.load-more-btn,
+.load-less-btn {
   padding: 0.8rem 2rem;
   font-size: 1rem;
-  background: var(--color-btn-bg, #333);
-  color: rgb(255, 255, 255);
-  border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background var(--transition-fast), color var(--transition-fast), border var(--transition-fast);
+  border: none;
+  color: var(--color-white);
+  background: var(--color-btn-bg);
 }
 
-.load-more-btn:hover {
-  background: var(--color-hover-bg, #555);
+.load-more-btn:hover,
+.load-less-btn:hover {
+  background: var(--color-hover-bg);
 }
 
+.load-less-btn {
+  background: var(--color-white);
+  color: var(--color-text);
+  border: 2px solid var(--color-btn-bg);
+}
+
+.load-less-btn:hover {
+  background: var(--color-hover-bg);
+  color: var(--color-white);
+  border-color: var(--color-hover-bg);
+}
 
 /* ====== About Section ====== */
 .about {

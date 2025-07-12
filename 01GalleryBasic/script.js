@@ -1,91 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   const galleryImages = [
-    {
-      full: 'https://picsum.photos/1200/800?random=1',
-      thumb: 'https://picsum.photos/600/400?random=1',
-      alt: 'Golden hour over lake',
-      title: 'Golden Reflections',
-      description: 'Sunset at the lake, soft and silent.',
-      delay: 0
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=2',
-      thumb: 'https://picsum.photos/600/400?random=2',
-      alt: 'Urban skyline at dusk',
-      title: 'Urban Contrast',
-      description: 'Lines, angles, and balance.',
-      delay: 100
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=3',
-      thumb: 'https://picsum.photos/600/400?random=3',
-      alt: 'Forest trail at sunrise',
-      title: 'Wander Through Mist',
-      description: 'Morning fog along a quiet path.',
-      delay: 200
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=4',
-      thumb: 'https://picsum.photos/600/400?random=4',
-      alt: 'Ocean coast cliffside',
-      title: 'Coastal Silence',
-      description: 'Waves crashing into rugged beauty.',
-      delay: 300
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=5',
-      thumb: 'https://picsum.photos/600/400?random=5',
-      alt: 'Desert road and sky',
-      title: 'Endless Road',
-      description: 'Minimalist desert perspective.',
-      delay: 400
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=6',
-      thumb: 'https://picsum.photos/600/400?random=6',
-      alt: 'City at night',
-      title: 'Night Pulse',
-      description: 'Energy of the city after dark.',
-      delay: 0
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=7',
-      thumb: 'https://picsum.photos/600/400?random=7',
-      alt: 'Person in silhouette',
-      title: 'Shadowed Light',
-      description: 'A quiet moment of contrast.',
-      delay: 100
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=8',
-      thumb: 'https://picsum.photos/600/400?random=8',
-      alt: 'Mountain ridges',
-      title: 'Summit Lines',
-      description: 'Where sky meets stone.',
-      delay: 200
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=9',
-      thumb: 'https://picsum.photos/600/400?random=9',
-      alt: 'Abstract motion lights',
-      title: 'Electric Motion',
-      description: 'Long exposure neon bursts.',
-      delay: 300
-    },
-    {
-      full: 'https://picsum.photos/1200/800?random=10',
-      thumb: 'https://picsum.photos/600/400?random=10',
-      alt: 'Forest path in fog',
-      title: 'Still Wander',
-      description: 'Walking through morning mist.',
-      delay: 400
-    }
+    { full: 'https://picsum.photos/1200/800?random=1', thumb: 'https://picsum.photos/600/400?random=1', alt: 'Golden hour over lake', title: 'Golden Reflections', description: 'Sunset at the lake, soft and silent.', delay: 0 },
+    { full: 'https://picsum.photos/1200/800?random=2', thumb: 'https://picsum.photos/600/400?random=2', alt: 'Urban skyline at dusk', title: 'Urban Contrast', description: 'Lines, angles, and balance.', delay: 100 },
+    { full: 'https://picsum.photos/1200/800?random=3', thumb: 'https://picsum.photos/600/400?random=3', alt: 'Forest trail at sunrise', title: 'Wander Through Mist', description: 'Morning fog along a quiet path.', delay: 200 },
+    { full: 'https://picsum.photos/1200/800?random=4', thumb: 'https://picsum.photos/600/400?random=4', alt: 'Ocean coast cliffside', title: 'Coastal Silence', description: 'Waves crashing into rugged beauty.', delay: 300 },
+    { full: 'https://picsum.photos/1200/800?random=5', thumb: 'https://picsum.photos/600/400?random=5', alt: 'Desert road and sky', title: 'Endless Road', description: 'Minimalist desert perspective.', delay: 400 },
+    { full: 'https://picsum.photos/1200/800?random=6', thumb: 'https://picsum.photos/600/400?random=6', alt: 'City at night', title: 'Night Pulse', description: 'Energy of the city after dark.', delay: 0 },
+    { full: 'https://picsum.photos/1200/800?random=7', thumb: 'https://picsum.photos/600/400?random=7', alt: 'Person in silhouette', title: 'Shadowed Light', description: 'A quiet moment of contrast.', delay: 100 },
+    { full: 'https://picsum.photos/1200/800?random=8', thumb: 'https://picsum.photos/600/400?random=8', alt: 'Mountain ridges', title: 'Summit Lines', description: 'Where sky meets stone.', delay: 200 },
+    { full: 'https://picsum.photos/1200/800?random=9', thumb: 'https://picsum.photos/600/400?random=9', alt: 'Abstract motion lights', title: 'Electric Motion', description: 'Long exposure neon bursts.', delay: 300 },
+    { full: 'https://picsum.photos/1200/800?random=10', thumb: 'https://picsum.photos/600/400?random=10', alt: 'Forest path in fog', title: 'Still Wander', description: 'Walking through morning mist.', delay: 400 }
   ];
 
   const galleryList = document.getElementById('gallery-list');
   const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadLessBtn = document.getElementById('load-less-btn');
 
-  const batchSize = 6; // Number of images to load each time
+  const batchSize = 6;
   let currentIndex = 0;
 
   function renderBatch() {
@@ -118,20 +49,36 @@ document.addEventListener('DOMContentLoaded', () => {
       loadMoreBtn.style.display = 'none';
     }
 
-    AOS.refresh(); // Refresh animations after new elements added
+    if (currentIndex > batchSize) {
+      loadLessBtn.style.display = 'inline-block';
+    } else {
+      loadLessBtn.style.display = 'none';
+    }
+
+    AOS.refresh();
   }
 
-  // Initial batch load
+  function renderInitialBatch() {
+    galleryList.innerHTML = '';
+    currentIndex = 0;
+    loadMoreBtn.style.display = 'inline-block';
+    renderBatch();
+
+    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Event listeners
+  loadMoreBtn.addEventListener('click', renderBatch);
+  loadLessBtn.addEventListener('click', renderInitialBatch);
+
+  // Initial load
   renderBatch();
 
-  // Load more on button click
-  loadMoreBtn.addEventListener('click', renderBatch);
-
-  // Initialize Lightbox and AOS
+  // Lightbox and AOS init
   new SimpleLightbox('.gallery__list a');
   AOS.init({ duration: 1000 });
 
-  // Smooth scrolling for anchor links
+  // Smooth scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -143,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Simple form submit handler (if you want to keep this)
+// Optional form handler
 function handleSubmit(event) {
   event.preventDefault();
   alert("Thank you! Your message has been sent.");
