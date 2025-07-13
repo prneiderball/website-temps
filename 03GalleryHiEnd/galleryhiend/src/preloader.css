@@ -15,6 +15,7 @@
 .preloader--hidden {
   opacity: 0;
   transform: scale(1.2);
+  pointer-events: none;
 }
 
 .preloader__content {

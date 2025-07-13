@@ -1,6 +1,15 @@
+// main.js
+
+// Swiper 11+ full bundle import
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
+
+// GSAP
+import { gsap } from 'gsap';
+
+// Custom styles
 import './style.css';
 
-// Log initial load
 console.log("Script loaded!");
 
 // --------------------------------------------------------------------------------
@@ -12,26 +21,27 @@ function onWindowLoad() {
   initPreloader();
 }
 
-// Preloader animation
 function initPreloader() {
   const preloader = document.querySelector(".preloader");
   const progressBar = document.querySelector(".preloader__progress-bar");
 
-  // Prevent scrolling until preloader finishes
   document.body.style.overflowY = "hidden";
 
-  setTimeout(() => { progressBar.style.width = "100%"; }, 100);
   setTimeout(() => {
-    preloader.classList.add("preloader--hidden");
+    progressBar.style.width = "100%";
+  }, 100);
+
+  setTimeout(() => {
+    if (preloader && preloader.parentNode) {
+      preloader.parentNode.removeChild(preloader);
+    }
     document.body.style.overflowY = "auto";
   }, 3000);
 }
 
 // --------------------------------------------------------------------------------
-// DOM CONTENT LOADED: Grouped Initializations
+// DOM CONTENT LOADED
 // --------------------------------------------------------------------------------
-console.log("Welcome JS is connected.");
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded.");
 
@@ -46,26 +56,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --------------------------------------------------------------------------------
-// 1. CUSTOM CURSOR
+// CUSTOM CURSOR
 // --------------------------------------------------------------------------------
 function initCustomCursor() {
   const cursor = document.createElement("div");
   cursor.classList.add("cursor");
   document.body.appendChild(cursor);
 
-  document.addEventListener("mousemove", e => {
+  // Initial position
+  cursor.style.left = '0px';
+  cursor.style.top = '0px';
+
+  // Track mouse position
+  document.addEventListener("mousemove", (e) => {
     cursor.style.left = `${e.clientX}px`;
     cursor.style.top = `${e.clientY}px`;
   });
 
-  document.querySelectorAll("a, button, .swiper-slide").forEach(el => {
+  // Add hover states
+  document.querySelectorAll("a, button, .swiper-slide").forEach((el) => {
     el.addEventListener("mouseenter", () => cursor.classList.add("cursor--hover"));
     el.addEventListener("mouseleave", () => cursor.classList.remove("cursor--hover"));
   });
 }
 
+
 // --------------------------------------------------------------------------------
-// 2. PARTICLE EFFECTS (Lazy Load)
+// PARTICLE EFFECTS
 // --------------------------------------------------------------------------------
 function initParticleEffects() {
   const container = document.getElementById("particles-js");
@@ -76,13 +93,23 @@ function initParticleEffects() {
       if (entry.isIntersecting) {
         particlesJS("particles-js", {
           particles: {
-            number: { value: 60 }, shape: { type: "circle" }, size: { value: 3 }, opacity: { value: 0.7 },
-            move: { enable: true, speed: 1 }, line_linked: { enable: false }
+            number: { value: 60 },
+            shape: { type: "circle" },
+            size: { value: 3 },
+            opacity: { value: 0.7 },
+            move: { enable: true, speed: 1 },
+            line_linked: { enable: false }
           },
           interactivity: {
             detect_on: "canvas",
-            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
-            modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+            events: {
+              onhover: { enable: true, mode: "repulse" },
+              onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+              repulse: { distance: 100 },
+              push: { particles_nb: 4 }
+            }
           },
           retina_detect: true
         });
@@ -95,27 +122,22 @@ function initParticleEffects() {
 }
 
 // --------------------------------------------------------------------------------
-// 3. THEME TOGGLE (With Debug Logs)
+// THEME TOGGLE
 // --------------------------------------------------------------------------------
 function initThemeToggle() {
-  console.log('→ [Debug] initThemeToggle called.');
   const toggle = document.querySelector('.theme-toggle');
-  console.log('→ [Debug] theme-toggle element:', toggle);
   if (!toggle) return;
   const icon = toggle.querySelector('i');
-  console.log('→ [Debug] theme icon element:', icon);
 
   toggle.addEventListener('click', () => {
-    console.log('→ [Debug] theme-toggle clicked');
     document.body.classList.toggle('theme-platinum');
     icon.classList.toggle('fa-moon');
     icon.classList.toggle('fa-sun');
-    console.log('→ [Debug] body classes now:', document.body.className);
   });
 }
 
 // --------------------------------------------------------------------------------
-// 4. MOBILE NAV TOGGLE
+// MOBILE NAV
 // --------------------------------------------------------------------------------
 function initMobileNav() {
   const btn = document.querySelector(".nav__toggle");
@@ -128,24 +150,13 @@ function initMobileNav() {
 }
 
 // --------------------------------------------------------------------------------
-// 5. SWIPER GALLERY (With Debug Logs)
+// SWIPER GALLERY (Updated for Swiper 11+)
 // --------------------------------------------------------------------------------
 function initSwiperGallery() {
-  console.log('→ [Debug] initSwiperGallery called.');
-  console.log('→ [Debug] Swiper constructor:', typeof Swiper);
   const swiperEl = document.querySelector('.teaser-swiper');
-  console.log('→ [Debug] .teaser-swiper element:', swiperEl);
+  if (!swiperEl) return;
 
-  if (typeof Swiper === 'undefined') {
-    console.error('Swiper is not loaded.');
-    return;
-  }
-  if (!swiperEl) {
-    console.error('.teaser-swiper container not found.');
-    return;
-  }
-
-  const swiper = new Swiper('.teaser-swiper', {
+  const swiper = new Swiper(swiperEl, {
     loop: true,
     centeredSlides: true,
     grabCursor: true,
@@ -164,11 +175,10 @@ function initSwiperGallery() {
       1024: { slidesPerView: 3 },
     },
   });
-  console.log('→ [Debug] Swiper instance created:', swiper);
 }
 
 // --------------------------------------------------------------------------------
-// 6. GSAP HERO ANIMATION
+// GSAP HERO ANIMATION
 // --------------------------------------------------------------------------------
 function initGsapHeroAnimation() {
   gsap.to(".hero__title span", { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out" });
@@ -176,7 +186,7 @@ function initGsapHeroAnimation() {
 }
 
 // --------------------------------------------------------------------------------
-// 7. TESTIMONIALS SLIDER
+// TESTIMONIALS SLIDER (Manual Carousel)
 // --------------------------------------------------------------------------------
 function initTestimonialsSlider() {
   const sliderEl = document.getElementById("testimonials-slider");
@@ -201,14 +211,21 @@ function initTestimonialsSlider() {
     ).join("");
   }
 
-  prevBtn.addEventListener("click", () => { currentIndex = (currentIndex - 1 + items.length) % items.length; render(); });
-  nextBtn.addEventListener("click", () => { currentIndex = (currentIndex + 1) % items.length; render(); });
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    render();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    render();
+  });
 
   render();
 }
 
 // --------------------------------------------------------------------------------
-// 8. CONTACT MODAL
+// CONTACT MODAL MULTI-STEP FORM
 // --------------------------------------------------------------------------------
 function initContactModal() {
   const modal = document.getElementById("contact");
@@ -219,6 +236,7 @@ function initContactModal() {
   const prevBtn = modal.querySelector(".contact__prev");
   const steps = modal.querySelectorAll(".contact__step");
   const progress = modal.querySelectorAll(".contact__progress-step");
+  const form = modal.querySelector("form");
 
   let stepIndex = 0;
 
@@ -233,9 +251,17 @@ function initContactModal() {
 
   showStep(stepIndex);
 
-  nextBtn.addEventListener("click", () => { stepIndex = Math.min(stepIndex + 1, steps.length - 1); showStep(stepIndex); });
-  prevBtn.addEventListener("click", () => { stepIndex = Math.max(stepIndex - 1, 0); showStep(stepIndex); });
-  closeBtn.addEventListener("click", () => modal.classList.remove("contact-modal--open"));
+  nextBtn?.addEventListener("click", () => {
+    stepIndex = Math.min(stepIndex + 1, steps.length - 1);
+    showStep(stepIndex);
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    stepIndex = Math.max(stepIndex - 1, 0);
+    showStep(stepIndex);
+  });
+
+  closeBtn?.addEventListener("click", () => modal.classList.remove("contact-modal--open"));
 
   document.querySelectorAll('.nav__link[href="#contact"]').forEach(link => {
     link.addEventListener("click", e => {
@@ -244,5 +270,28 @@ function initContactModal() {
       stepIndex = 0;
       showStep(stepIndex);
     });
+  });
+
+  // ESC key to close modal
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("contact-modal--open")) {
+      modal.classList.remove("contact-modal--open");
+    }
+  });
+
+  // Submit handler
+  form?.addEventListener("submit", e => {
+    e.preventDefault();
+    modal.classList.remove("contact-modal--open");
+    form.reset();
+    stepIndex = 0;
+    showStep(stepIndex);
+
+    const successMsg = document.createElement('div');
+    successMsg.className = 'form-success';
+    successMsg.textContent = "Thank you! Your message was sent.";
+    document.body.appendChild(successMsg);
+
+    setTimeout(() => successMsg.remove(), 3000);
   });
 }
