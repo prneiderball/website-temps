@@ -12,12 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isExpanded = false;
 
-  // ✅ Create Lightbox instance
   const lightbox = new SimpleLightbox(".gallery__list a", {
     overlayOpacity: 0.9,
   });
 
-  // ✅ Pass instance into renderGallery
   const render = () => {
     renderGallery({
       images: placeholderImages,
