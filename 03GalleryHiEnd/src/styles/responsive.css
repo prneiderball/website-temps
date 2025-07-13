@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+  .nav__list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 15, 15, 0.98);
+    padding: 2rem;
+  }
+
+  .nav--open .nav__list {
+    display: flex;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  .featured {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .teaser-gallery__carousel {
+    height: 400px;
+  }
+
+  .teaser-gallery__item {
+    width: 250px;
+    height: 350px;
+  }
+}

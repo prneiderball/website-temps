@@ -1,0 +1,48 @@
+.teaser-gallery {
+  padding: 8rem 0;
+}
+
+.swiper {
+  padding: 2rem 0;
+}
+
+.swiper-slide {
+  width: 300px;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--accent-color);
+}
+
+.swiper-pagination-bullet {
+  background: var(--accent-color);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #f5f5f5;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide:hover .overlay {
+  opacity: 1;
+}
