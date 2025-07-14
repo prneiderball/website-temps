@@ -23,19 +23,6 @@
   transform: translateX(-50%);
 }
 
-
-/* Intro */
-.intro {
-  padding: 8rem 0;
-  text-align: center;
-}
-
-.intro p {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-}
-
 /* Featured */
 .featured {
   padding: 8rem 0;
