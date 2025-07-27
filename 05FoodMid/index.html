@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to [Café Name] - Savor artisanal dishes and coffee in a warm, inviting atmosphere. Book now or order online!">
-  <meta name="keywords" content="[Café Name], café, restaurant, [city name], brunch, coffee, artisanal, reservations">
-  <meta name="author" content="[Café Name]">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Welcome to [Café Name] - Savor artisanal dishes and coffee in a warm, inviting atmosphere. Book now or order online!" />
+  <meta name="keywords" content="[Café Name], café, restaurant, [city name], brunch, coffee, artisanal, reservations" />
+  <meta name="author" content="[Café Name]" />
   <title>[Café Name] - Artisanal Café in [City]</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Lora:wght@700&display=swap" rel="stylesheet" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://picsum.photos/seed/favicon/32/32">
+  <link rel="icon" type="image/png" href="https://picsum.photos/seed/favicon/32/32" />
 
   <!-- External CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <div class="container">
       <div class="logo">
-        <img src="https://picsum.photos/seed/logo/100/100" alt="[Café Name] Logo" width="100" loading="lazy">
+        <img src="https://picsum.photos/seed/logo/100/100" alt="[Café Name] Logo" width="100" loading="lazy" />
       </div>
       <nav aria-label="Main navigation">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">☰</button>
-        <ul id="nav-list" hidden>
+        <ul id="nav-list">
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
@@ -54,7 +54,7 @@
           <p>Founded in [year], [Café Name] is a haven for food lovers. Our chefs use locally sourced, seasonal ingredients to create dishes that delight the senses.</p>
           <p>Whether it’s a morning latte or an evening dessert, our warm ambiance makes every visit special.</p>
         </div>
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Cozy café interior" class="about-image" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Cozy café interior" class="about-image" loading="lazy" />
       </div>
     </div>
   </section>
@@ -63,20 +63,20 @@
   <section id="menu" class="menu fade-in">
     <div class="container">
       <h2>Menu Highlights</h2>
-      <div class="menu-carousel">
+      <div class="carousel-wrapper">
         <div class="menu-grid">
           <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1604908177225-c0d58e665b53?auto=format&fit=crop&w=600&q=80" alt="Truffle Mushroom Risotto" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1604908177225-c0d58e665b53?auto=format&fit=crop&w=600&q=80" alt="Truffle Mushroom Risotto" loading="lazy" />
             <h3>Truffle Mushroom Risotto</h3>
             <p>Creamy risotto with wild mushrooms and truffle oil.</p>
           </div>
           <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" alt="Matcha Latte" loading="lazy" />
             <h3>Matcha Latte</h3>
             <p>Velvety matcha with steamed oat milk.</p>
           </div>
           <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1599785209707-28c2cb16f89c?auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1599785209707-28c2cb16f89c?auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake" loading="lazy" />
             <h3>Decadent Chocolate Cake</h3>
             <p>Rich chocolate cake with silky ganache.</p>
           </div>
@@ -94,20 +94,20 @@
       <h2>Book a Table</h2>
       <form action="#" method="POST" class="reservation-form" novalidate>
         <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required aria-required="true">
-          <span class="error-message">Name is required</span>
+          <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+          <span class="error-message" aria-live="polite">Name is required</span>
         </div>
         <div class="form-group">
-          <input type="date" name="date" required aria-required="true">
-          <span class="error-message">Date is required</span>
+          <input type="date" name="date" required aria-required="true" />
+          <span class="error-message" aria-live="polite">Date is required</span>
         </div>
         <div class="form-group">
-          <input type="time" name="time" required aria-required="true">
-          <span class="error-message">Time is required</span>
+          <input type="time" name="time" required aria-required="true" />
+          <span class="error-message" aria-live="polite">Time is required</span>
         </div>
         <div class="form-group">
-          <input type="number" name="party-size" placeholder="Party Size" min="1" required aria-required="true">
-          <span class="error-message">Party size must be at least 1</span>
+          <input type="number" name="party-size" placeholder="Party Size" min="1" required aria-required="true" />
+          <span class="error-message" aria-live="polite">Party size must be at least 1</span>
         </div>
         <button type="submit" class="cta-button">Reserve Now</button>
       </form>
@@ -144,7 +144,7 @@
           <p>Hours: Mon–Sun, 8 AM–8 PM</p>
           <form action="#" method="POST" class="newsletter-form">
             <label for="email" class="visually-hidden">Email for Newsletter</label>
-            <input type="email" id="email" name="email" placeholder="Join our newsletter" required aria-required="true">
+            <input type="email" id="email" name="newsletter-email" placeholder="Join our newsletter" required aria-required="true" />
             <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
           </form>
         </div>
@@ -154,13 +154,13 @@
       </div>
       <div class="footer-social">
         <a href="https://instagram.com" target="_blank" aria-label="Instagram">
-          <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="" width="24" loading="lazy">
+          <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" width="24" loading="lazy" />
         </a>
         <a href="https://facebook.com" target="_blank" aria-label="Facebook">
-          <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="" width="24" loading="lazy">
+          <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook" width="24" loading="lazy" />
         </a>
         <a href="https://x.com" target="_blank" aria-label="X">
-          <img src="https://img.icons8.com/ios-filled/50/000000/twitterx--v1.png" alt="" width="24" loading="lazy">
+          <img src="https://img.icons8.com/ios-filled/50/000000/twitterx--v1.png" alt="X (formerly Twitter)" width="24" loading="lazy" />
         </a>
       </div>
       <p class="footer-copy">© 2025 [Café Name]. All rights reserved.</p>

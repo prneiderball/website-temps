@@ -1,4 +1,4 @@
-// Carousel buttons
+// === Carousel Controls ===
 const prev = document.querySelector(".carousel-prev");
 const next = document.querySelector(".carousel-next");
 const carousel = document.querySelector(".menu-grid");
@@ -11,10 +11,12 @@ next?.addEventListener("click", () => {
   carousel.scrollBy({ left: 320, behavior: "smooth" });
 });
 
-// Form validation
+// === Form Validation ===
 const form = document.querySelector(".reservation-form");
+
 form?.addEventListener("submit", (e) => {
   let isValid = true;
+
   const fields = form.querySelectorAll("input[required]");
   fields.forEach((field) => {
     const error = field.nextElementSibling;
@@ -28,13 +30,16 @@ form?.addEventListener("submit", (e) => {
     }
   });
 
-  if (!isValid) e.preventDefault();
+  if (!isValid) {
+    e.preventDefault();
+  }
 });
 
-// Mobile nav toggle (optional enhancement)
+// === Mobile Nav Toggle ===
 const toggleBtn = document.querySelector(".nav-toggle");
-const nav = document.querySelector("nav ul");
+const navList = document.getElementById("nav-list");
 
 toggleBtn?.addEventListener("click", () => {
-  nav.classList.toggle("open");
+  const isOpen = navList.classList.toggle("open");
+  toggleBtn.setAttribute("aria-expanded", isOpen.toString());
 });
